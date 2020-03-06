@@ -1,0 +1,74 @@
+.jsgrid-cell{
+    word-wrap:break-word;
+}
+.rowIdentity{
+    display:none;
+}
+.jsgrid-header-sort-asc:before,
+.jsgrid-header-sort-desc:before
+{
+    margin-top:0.5em;
+}
+.simpleTextAreaInteractableMessageTextarea{
+    width:80%;
+}
+.simpleMultipleButtonInteractableMessageButton{
+}
+.simpleRadioButtonInteractableMessageButton{
+}
+.simpleDropdownInteractableMessageDropdown{
+}
+#slideControls{
+    float:right;
+}
+.bar{
+    fill:black;
+}
+#slideControls .toolbar{
+    color:black;
+    background:white;
+    border:1px solid black;
+    margin:1px;
+}
+.thumbnail{
+    margin-right:0;
+    padding-right:0;
+    display:block;
+}
+
+#upload{
+    z-index:1;
+    position:absolute;
+    display:none;
+    background-color:white;
+    color:black;
+}
+#imageUploadSubmit{
+    display:none;
+}
+#upload progress{
+    vertical-align:top;
+}
+.fail{
+    background-color:red;
+}
+#closeTextInput{
+    float:right;
+    background-color:red;
+    color:white;
+    font-weight:bold;
+    width:30px;
+    height:30px;
+    text-align:center;
+}
+#textAdorner{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+#thumbColumnDragHandle{
+    order:0;
+    height:calc(100vh - 120px);
+}

@@ -1,0 +1,189 @@
+<div class="lift:surround?with=unstyledDefaultWebMeTL;at=content">
+  <script data-lift="with-resource-id" src="static/js/stable/lodash-4.12.0.js"></script>
+  <script data-lift="with-resource-id" src="static/js/stable/jquery-ui-1.12.0.min.js"></script>
+  <link data-lift="with-resource-id" rel="stylesheet" href="static/css/directlyOnBackground.css"></link>
+  <link data-lift="with-resource-id" rel="stylesheet" href="static/css/jAlert.css"></link>
+  <script data-lift="with-resource-id" src="static/js/stable/jAlert.min.js"></script>
+  <script data-lift="with-resource-id" src="static/js/stable/jAlert-functions.min.js"></script>
+  <script data-lift="with-resource-id" src="static/js/stable/sprintf-0.7-beta1.js"></script>
+  <script data-lift="with-resource-id" src="static/js/min/editConversation.js"></script>
+  <style>
+    body.dragging, body.dragging * {
+    cursor: move !important;
+    }
+
+    .dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+    }
+
+    #sortableRoot tr.placeholder {
+    position: relative;
+    /** More li styles **/
+    }
+    #sortableRoot tr.placeholder:before {
+    position: absolute;
+    /** Define arrowhead **/
+    }
+    .slideDragHandle {
+    text-align:center;
+    vertical-align:middle;
+    padding:0 1em;
+    }
+    .slideThumbnail{
+    height:50px;
+    }
+    .perSlideControls{
+    display:flex;
+    flex-direction:row;
+    }
+    .slideControl button{
+    padding:0 1em;
+    margin:0 1em;
+    }
+    .slideContainer label, .slideContainer button{
+    margin:0;
+    }
+    #reorderInProgress{
+    margin-left:2em;
+    }
+    .slideActions, #reorderInProgress button{
+    display:inline-block;
+    }
+    .fa-sort:before {
+    content: "\f0dc";
+    }
+    .conversationSlidesContainer th, .conversationSlidesContainer td {
+    text-align:center;
+    }
+    #deleteConfirm{
+    display:none;
+    }
+  </style>
+  <script>
+    $(function(){
+    $("#deleteChallenge").click(function(){
+    $("#deleteConfirm").show();
+    });
+    });
+  </script>
+  <div class="lift:Metl.specificEditConversation"></div>
+  <div class="indent directlyOnBackground">
+    <a class="backToConversations">Back to search</a>
+    <a class="joinConversation ml">Join conversation</a>
+    <h1>Edit conversation</h1>
+    <div class="editConversationContainer">
+      <h2>Fixed attributes</h2>
+      <table class="indent">
+        <tr>
+          <th>Jid: </th>
+          <td class="conversationJid"></td>
+        </tr>
+        <tr>
+          <th>Author: </th>
+          <td class="conversationAuthor"></td>
+        </tr>
+        <tr>
+          <th>Created: </th>
+          <td class="conversationCreated"></td>
+        </tr>
+        <tr>
+          <th>Last Modified: </th>
+          <td class="conversationLastModified"></td>
+        </tr>
+      </table>
+      <script class="currentConversationVar"></script>
+      <h2>Editable attributes</h2>
+      <table class="indent">
+        <tr id="sharingContainer">
+          <th>Sharing: </th>
+          <td class="conversationSharing">
+            <div class="conversationSharingCategoryContainer">
+              <div><span class="btn-icon fa conversationSharingCollapser"></span><span class="conversationSharingCategory"></span></div>
+              <div class="conversationSharingChoiceContainer">
+                <div class="conversationSharingChoice indent">
+                  <input class="conversationSharingChoiceInputElement" type="radio" name="conversationSharingChoice"></input>
+                  <label class="conversationSharingChoiceLabel"></label>
+                  <br></br>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Title: </th>
+          <td class="conversationTitle">
+            <input type="text" id="conversationTitleInput"></input>
+          </td>
+        </tr>
+      </table>
+      <h2>Conversation level actions</h2>
+      <div class="indent">
+        <button class="btn-icon fa fa-archive directlyOnBackground" type="button" id="archiveChallenge"><div class="icon-txt directlyOnBackground">Archive</div></button>
+        <button class="btn-icon fa fa-archive directlyOnBackground" type="button" id="unarchiveChallenge"><div class="icon-txt directlyOnBackground">Unarchive</div></button>
+        <button class="btn-icon fa fa-copy directlyOnBackground" type="button" id="duplicateChallenge"><div class="icon-txt directlyOnBackground">Duplicate</div></button>
+      </div>
+      <h2 class="slideActions">Page level actions</h2>
+      <span id="reorderInProgress">
+        <span>
+          <button type="button" id="reorderSlides">Commit reorder</button>
+        </span>
+        <span>
+          <button type="button" id="cancelReorderSlides">Cancel reorder</button>
+        </span>
+      </span>
+      <table class="conversationSlidesContainer indent">
+        <thead>
+          <tr>
+            <th>Reorder</th>
+            <th>Move down</th>
+            <th>Move up</th>
+            <th>Id</th>
+            <th>Index</th>
+            <th>Exposure</th>
+            <th>Join</th>
+          </tr>
+        </thead>
+        <tbody id="sortableRoot">
+          <tr class="slideContainer">
+            <td>
+              <div class="slideDragHandle"><i class="fa fa-sort"></i></div>
+            </td>
+            <td>
+              <div class="slideDragHandle moveSlideForward"><i class="fa fa-sort-down"></i></div>
+            </td>
+            <td>
+              <div class="slideDragHandle moveSlideBack"><i class="fa fa-sort-up"></i></div>
+            </td>
+            <td>
+              <span class="slideId"></span>
+            </td>
+            <td>
+              <span class="slideIndex"></span>
+            </td>
+            <td>
+              <span class="slideExposedContainer">
+                <input type="checkbox" class="slideExposedCheckbox"></input>
+                <label class="slideExposedCheckboxLabel"></label>
+              </span>
+            <td class="slideAnchorContainer">
+              <a class="slideAnchor">
+                <img class="slideThumbnail"></img>
+              </a>
+            </td>
+            <td>
+              <button class="duplicateSlideButton btn-icon fa fa-copy directlyOnBackground" type="button"><div class="icon-txt">Duplicate</div></button>
+            </td>
+            <td>
+              <button class="addSlideBeforeButton btn-icon fa fa-caret-square-o-up directlyOnBackground" type="button"><div class="icon-txt">Add before</div></button>
+            </td>
+            <td>
+              <button class="addSlideAfterButton btn-icon fa fa-caret-square-o-down directlyOnBackground" type="button"><div class="icon-txt">Add after</div></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

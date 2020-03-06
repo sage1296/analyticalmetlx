@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app>
+  <listener>
+    <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>ShiroFilter</filter-name>
+    <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ShiroFilter</filter-name>
+    <url-pattern>/api/v1/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>MeTLAuthFilter</filter-name>
+    <description>An authentication filter which suspends requests to perform complex authentication and supports resuming the original request afterwards</description>
+    <filter-class>com.metl.auth.LoggedInFilter</filter-class>
+    <init-param>
+      <param-name>configPathVariableName</param-name>
+      <param-value>metlx.configurationFile</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>MeTLAuthFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>LiftFilter</filter-name>
+    <display-name>Lift Filter</display-name>
+    <description>The Filter that intercepts lift calls</description>
+    <filter-class>net.liftweb.http.LiftFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LiftFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- Override init parameter to avoid nasty -->
+  <!-- file locking issue on windows.         -->
+  <!--REMOVE THIS SECTION TO DEPLOY TO CLOUDBEES -->
+  <servlet>
+    <servlet-name>default</servlet-name>
+    <init-param>
+      <param-name>useFileMappedBuffer</param-name>
+      <param-value>false</param-value>
+    </init-param>
+  </servlet>
+  <session-config>
+    <cookie-config>
+      <name>JSESSIONID</name>
+      <!-- leaving http-only cookies turned off until the C# client is dead -->
+      <!--                      <http-only>true</http-only>-->
+      <!--<secure>true</secure>-->
+    </cookie-config>
+    <session-timeout>5</session-timeout>
+  </session-config>
+</web-app>

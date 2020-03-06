@@ -1,0 +1,52 @@
+<div class="lift:surround?with=unstyledDefaultWebMeTL;at=content">
+    <head>
+        <link data-lift="with-resource-id" rel="stylesheet" href="static/css/directlyOnBackground.css"/>
+        <link data-lift="with-resource-id" rel="stylesheet" href="static/css/statistics.css"/>
+        <script data-lift="with-resource-id" src="static/js/stable/sprintf-0.7-beta1.js"></script>
+        <script data-lift="with-resource-id" src="static/js/stable/lodash.min.js"></script>
+        <script data-lift="with-resource-id" src="static/js/stable/moment.min.js"></script>
+        <script data-lift="with-resource-id" src="static/js/stable/d3.v4.min.js"></script>
+        <script data-lift="with-resource-id" src="static/js/stable/d3.layout.cloud.js"></script>
+        <script data-lift="with-resource-id" src="static/js/stable/typo.js"></script>
+        <style>
+            .result{
+                text-align:right;
+                font-family: 'Courier New', Monospace;
+            }
+        </style>
+    </head>
+    <script type="text/javascript">
+        var updateStatistics = function (s) {
+            $('#statistics').html(s);
+            var now = new Date();
+            var t = sprintf("%02d:%02d:%02d", now.getHours(), now.getMinutes(), now.getSeconds());
+            $('#timestampStats').html('Last run: ' + t);
+        };
+    </script>
+    <div id="masterLayout" class="flex-container-column">
+        <div class="mbt">
+            <div class="indent flex-container-row">
+                <div class="flex-container-column">
+                    <h1 class="directlyOnBackground">Enterprise Statistics</h1>
+                    <div id="searchBoxContainer" class="mbt indent">
+                        <span id="searchBox"></span>
+                        <div class="flex-container-row">
+                        <span class="lift:statistics">
+                            <div class="directlyOnBackground">
+                                <span id="statistics"/>
+                            </div>
+                            <button id="statisticsButton" type="button" value="Search">
+                                <span class="fa fa-search">
+                                  <span class="icon-txt">Search</span>
+                                </span>
+                            </button>
+                            <span id="timestampStats" class="directlyOnBackground"/>
+                            <div id="loaderStats"></div>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

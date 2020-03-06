@@ -1,0 +1,251 @@
+1.21.9
+
+Update slu-adaptor to v0.0.6.
+
+1.21.5
+
+Update slu-adaptor to v0.0.4.
+
+Add the following attributes to the BurstingMeTLingPotAdaptor (in millis).
+  delayBetweenPolls = 10000
+  delayBetweenSends = 0
+  delayAfterError   = 30000
+  
+1.21.1
+
+Install Jetty 9.4.6.v20170531 and configure (see WoS for details).
+(dev only) Update start.jar to Jetty 9.4.6.v20170531.
+
+Wrap <d2lGradebook/> in <externalLibGradebookProvider className="com.metl.d2l.D2LGradebookConfigurator">.
+Wrap <d2lGroupsProvider/> in <externalLibGroupProvider className="com.metl.d2l.D2LGroupsConfigurator">.
+Wrap <d2lGroupStore/> in <externalLibGroupStoreProvider className="com.metl.d2l.D2LGroupStoreConfigurator">.
+Wrap <ApiGatewayMetlingPotAdaptor/> in <externalMetlingPotProvider className="com.metl.pot.AWSMeTLingPotAdaptorConfigurator">.
+Update <lti><remotePlugin/></lti> and <brightSpaceValence/> to 
+<lti>
+	<externalLibLtiProvider className="com.metl.d2l.BrightSparkLtiConfigurator">
+		<lti/> <!-- was <remotePlugin/> -->
+		<brightSpaceValence/>
+	</externalLibLtiProvider>
+</lti>
+
+Provide slu-adaptor_2.11-0.0.4.jar on classpath, and (for AWS MeTLingPot only):
+aws-java-sdk-core-1.11.72.jar
+aws-java-sdk-opensdk-1.11.72.jar
+
+Do this by copying to jetty/slu dir, and adding the following to webapps/context.xml:
+  <Set name="extraClasspath">slu/slu-adaptor_2.11-0.0.4.jar,slu/aws-java-sdk-core-1.11.72.jar,slu/aws-java-sdk-opensdk-1.11.72.jar</Set>
+
+1.20.15
+
+New config:
+	<authenticationConfiguration>
+		<exclusions>
+			<requestUriStartsWith value="/testCreateComet"/>
+
+1.12.4
+
+New config:
+
+	<mailer>
+		<name>SES emailer</name>
+		<smtp>email-smtp.us-east-1.amazonaws.com</smtp>
+		<port>587</port>
+		<ssl>true</ssl>
+		<username>XXX</username>
+		<password>XXX</password>
+		<fromAddress>no-reply-metl@stackableregiments.com</fromAddress>
+		<recipients>
+			<recipient>dave@stackableregiments.com</recipient>
+			<recipient>chris@stackableregiments.com</recipient>
+			<recipient>doug@stackableregiments.com</recipient>
+		</recipients>
+	</mailer>
+
+1.9.1
+
+New config in specificOverrides.txt:
+    <username>,special,analyst
+
+1.8.1
+
+New config: 
+	<authenticationConfiguration>
+		<exclusions>
+			<requestUriStartsWith value="/testFetchGlobalRoom"/>
+			<requestUriStartsWith value="/testCountConversations"/>
+
+1.5.1
+
+SLU Prod Only
+-------------
+
+Add to config:
+	<clientGoogleAnalytics></clientGoogleAnalytics>
+
+All
+---
+
+Add to config:
+	<googleAnalytics></googleAnalytics>
+(ID from appropriate Property at https://analytics.google.com/analytics/web)
+
+1.4.1
+
+Add to config:
+  <authenticationConfiguration>
+    <requestUriStartWith value="/manifest.json"/>
+
+1.3.2
+
+SLU Only
+--------
+
+Update config:
+	<externalGradebooks>
+		<d2lGradebook>
+	<groupsProvider>
+		<d2lGroupsProvider>
+Rename name attribute to id.
+Create name attribute with human-readable version of previous id.
+
+1.2.3
+
+SLU Prod Only
+-------------
+
+Update config:
+	<filter>
+to:
+	<filterNot>
+
+SLU Only
+--------
+
+Remove from config:
+	<d2lGradebook>
+		<acceptableRoleId name="Student">110</acceptableRoleId>
+
+1.1.6
+
+SLU Test Only
+-------------
+
+Update config:
+	<d2lGradebook>
+		<acceptableRoleId name="Instructor_Essentials">109</acceptableRoleId>
+		<acceptableRoleId name="Student">110</acceptableRoleId>
+		<acceptableRoleId name="Instructor_Savvy">114</acceptableRoleId>
+		<acceptableRoleId name="Instructor_Master">115</acceptableRoleId>
+	</d2lGradebook>
+
+Update config:
+	<d2lGroupsProvider>
+		<acceptableRoleId name="Instructor_Essentials">109</acceptableRoleId>
+		<acceptableRoleId name="Student">110</acceptableRoleId>
+		<acceptableRoleId name="Instructor_Savvy">114</acceptableRoleId>
+		<acceptableRoleId name="Instructor_Master">115</acceptableRoleId>
+	</d2lGroupsProvider>
+
+1.1.5
+
+SLU Prod Only
+--------
+
+Update config:
+	<flatFileGroups format="globalOverrides"
+		<filter>
+			<group valuePrefix="SG-"/>
+			<group valuePrefix="SG_"/>
+			<group valuePrefix="Prod_"/>
+		</filter>
+
+1.1.3
+
+SLU Only
+--------
+
+Update config:
+	<d2lGradebook>
+		<acceptableRoleId name="Student">110</acceptableRoleId>
+		<acceptableRoleId name="Instructor_1">113</acceptableRoleId>
+		<acceptableRoleId name="Instructor_2">109</acceptableRoleId>
+		<acceptableRoleId name="Instructor_3">114</acceptableRoleId>
+	</d2lGradebook>
+
+Update config:
+	<d2lGroupsProvider>
+		<acceptableRoleId name="Student">110</acceptableRoleId>
+		<acceptableRoleId name="Instructor_1">113</acceptableRoleId>
+		<acceptableRoleId name="Instructor_2">109</acceptableRoleId>
+		<acceptableRoleId name="Instructor_3">114</acceptableRoleId>
+	</d2lGroupsProvider>
+
+1.0.20
+
+SLU Only
+--------
+
+Update config:
+	<d2lGradebook lpApiVersion="1.15" leApiVersion="1.19"/>
+
+1.0.5
+
+Environment has MeTLing Pot Adaptor
+-----------------------------------
+
+New config: 
+	<groupsProvider>
+		<smartGroups name="SmartGroups"/>
+	</groupsProvider>
+(same credentials and apiKey as <ApiGatewayMetlingPotAdaptor/>)
+
+SLU Only
+--------
+
+Replace config: 
+	<groupsProvider>
+		<flatFileGroups/>
+	</groupsProvider>
+with:
+	<groupsProvider>
+		<d2lGroupsProvider name="D2L_Courses"/>
+	</groupsProvider>
+
+1.0.3
+
+New config: 
+	<metlingPotAdaptors><ApiGatewayMetlingPotAdaptor/></metlingPotAdaptors>
+(new credentials and apiKey)
+
+1.0.2
+
+SLU Only
+--------
+
+New config: 
+	<externalGradebooks><d2lGradebook name="D2L_SaintLeo"/></externalGradebooks>
+(same values as existing flatFileGroups provider for D2L)
+
+1.0.1
+
+New config:
+	<tokbox/>
+(same key/secret for all envs)
+
+Update config:
+    <cloudConverterApiKey/>
+(same key/secret for all envs)
+	
+0.11.1
+
+New config: 
+    <exclusions>
+		<requestUriStartsWith value="/about"/>
+        <requestUriStartsWith value="/releaseNotes"/>
+    </exclusions>
+	
+0.10.1
+
+METL-205:
+When this goes into PRD, it'll require us to redownload a cache of PRD groups in advance, so that we've got them in the new format.
+We've moved from CSV to XML in our caching format, now that the data is deeper.

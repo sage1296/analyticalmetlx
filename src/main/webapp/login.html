@@ -1,0 +1,250 @@
+<html>
+    <head>
+        <title>
+
+        </title>       
+        <link rel="stylesheet" href="../assets/styles/newcustom.css" />  
+        <link rel="stylesheet" href="../assets/styles/pure-min.css" />   
+ 
+        <script src="../assets/js/jquery.js"></script>
+        <script src="../assets/js/sidebar.js"></script>
+
+
+
+    </head>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        
+        /* Set a style for all buttons */
+        button {
+          background-color: #373737;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+        
+        button:hover {
+          opacity: 0.8;
+        }
+        
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+          width: auto;
+          padding: 10px 18px;
+          background-color: #373737;
+        }
+        
+        /* Center the image and position the close button */
+        .imgcontainer {
+          text-align: center;
+          margin: 24px 0 12px 0;
+          position: relative;
+        }
+        
+        img.avatar {
+          width: 40%;
+          border-radius: 50%;
+        }
+        
+        .container {
+          padding: 16px;
+        }
+        
+        span.psw {
+          float: right;
+          padding-top: 1px;
+        }
+        
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          left: 0;
+          top: 0;
+          width: 800px; /* Full width */
+          height: 100px; /* Full height */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+          padding-top: 0px;
+        }
+        
+        /* Modal Content/Box */
+        .modal-content {
+          background-color: #fefefe;
+          margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+          border: 1px solid #888;
+          width: 800px; /* Could be more or less, depending on screen size */
+        }
+        
+        /* The Close Button (x) */
+        .close {
+          position: absolute;
+          right: 25px;
+          top: 0;
+          color: #000;
+          font-size: 35px;
+          font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+          color: red;
+          cursor: pointer;
+        }
+        
+        /* Add Zoom Animation */
+        .animate {
+          -webkit-animation: animatezoom 0.6s;
+          animation: animatezoom 0.6s
+        }
+        
+        @-webkit-keyframes animatezoom {
+          from {-webkit-transform: scale(0)} 
+          to {-webkit-transform: scale(1)}
+        }
+          
+        @keyframes animatezoom {
+          from {transform: scale(0)} 
+          to {transform: scale(1)}
+        }
+        
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+          span.psw {
+             display: block;
+             float: none;
+          }
+          .cancelbtn {
+             width: 100%;
+          }
+        }
+        </style>
+    <body>          
+        <div id="header_wrap" class="outer">
+            <header class="inner">
+                <div class="grid" id="searchBar">
+            <div id="search">
+                <form role="search" method="get" action="/analyticalmetlx/search.html">
+                    <input id="q" name="q" title="Search query" placeholder="How do I ... ?" type="text">
+                    <input id="searchButton" name="searchButton" type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+        
+                <a href="/analyticalmetlx/index.html">
+                    <img id="project_title" src="images/metl.png" alt="MeTL" height="100px" border="0px" align="left">
+                </a>
+        
+                <h2 id="project_tagline">An open realtime system to manage learning</h2>
+        
+                <span class="pure-menu pure-menu-horizontal pure-menu-scrollable" id="nav">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item nav_link"><a href="/analyticalmetlx/index.html" class="pure-menu-link">Home</a></li>
+                <!--<li class="pure-menu-item nav_link"><a href="/analyticalmetlx/executive.html" class="pure-menu-link">Executive</a></li>-->
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover nav_link">
+                    <a href="/analyticalmetlx/academy.html" class="pure-menu-link">Academy</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item nav_sub_link"><a href="/analyticalmetlx/guide.html" class="pure-menu-link">User Guide</a></li>
+                        <li class="pure-menu-item nav_sub_link"><a href="/analyticalmetlx/academy-faq.html" class="pure-menu-link">Frequently Asked Questions</a></li>
+                        <li class="pure-menu-item nav_sub_link"><a href="/analyticalmetlx/academy-examples.html" class="pure-menu-link">Teaching Examples</a></li>
+                        <li class="pure-menu-item nav_sub_link"><a href="/analyticalmetlx/academy-pedagogy.html" class="pure-menu-link">Pedagogy</a></li>
+                        <!--<li class="pure-menu-item nav_sub_link"><a href="/analyticalmetlx/academy-tutorials.html" class="pure-menu-link">Tutorials</a></li>-->
+                    </ul>
+                </li>
+                <!--
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover nav_link">
+                    <a href="/analyticalmetlx/architecture.html" class="pure-menu-link">Architecture</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item nav_sub_link"><a href="/analyticalmetlx/architecture-design.html" class="pure-menu-link">Design</a></li>
+                        <li class="pure-menu-item nav_sub_link"><a href="/analyticalmetlx/architecture-security.html" class="pure-menu-link">Security</a></li>
+                        <li class="pure-menu-item nav_sub_link"><a href="/analyticalmetlx/architecture-capabilities.html" class="pure-menu-link">Capabilities</a></li>
+                    </ul>
+                </li>
+                -->
+                <li class="pure-menu-item nav_link"><a href="/analyticalmetlx/support.html" class="pure-menu-link">Support</a></li>
+                <li class="pure-menu-item nav_link"><a href="login.html" class="pure-menu-link" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register</a></li>
+                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+
+            </ul>
+        </span>
+            </header>
+        </div>
+
+        <div>
+            <form action="#">
+                <div class="container">
+                  <h1>Register</h1>
+                  <p>Please fill in this form to create an account.</p>
+                  <hr>
+              
+                  <label for="email" style="margin-right: 121px;"><b>Email</b></label>
+                  <input type="text" placeholder="Enter Email" name="email" required></br>
+              
+                  <label for="psw" style="margin-right: 88px;"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="psw" required></br>
+              
+                  <label for="psw-repeat" style="margin-right: 20px;"><b>Repeat Password</b></label>
+                  <input type="password" placeholder="Repeat Password" name="psw-repeat" required></br>
+                  <hr>
+              
+                  <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                 <a href="../../../docs/_layouts/index.html"> <button type="submit" class="registerbtn">Register</button></br></a>
+                </div>
+    
+              </form> 
+
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="#" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+<a href="../../../docs/_layouts/index.html"><button type="submit">Login</button></a>
+
+      
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+        </div>
+    </body>
+</html>

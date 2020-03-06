@@ -1,0 +1,520 @@
+@floating-background:lightgray;
+@floating-foreground:black;
+
+#loadingSpinner, .spinner{
+    height:100%;
+    width:100%;
+    left:0;
+    top:0;
+    position:absolute;
+    z-index:100;
+}
+#loadingSpinner{
+    background-image:@body-backgroundimage;
+}
+.template{
+    display:none;
+}
+#allocationContainer{
+    margin:2em;
+    border:1px solid black;
+}
+.chatMessageContent{
+    a{
+        text-decoration:underline;
+    }
+}
+.findExisting{
+}
+#importContainer{
+    position:relative;
+}
+#groupsPopup{
+    .groups{
+        margin-left:1em;
+        min-height:400px;
+        flex-grow:1;
+        background-color:lightgray;
+    }
+}
+.groupSlideDialog{
+    .groups{
+        margin-left:1em;
+        min-height:400px;
+        flex-grow:1;
+        background-color:lightgray;
+    }
+    .strategy{
+        display:inline-block;
+        margin-right:1em;
+    }
+    .importGroups{
+        .groupBuilderGroup{
+            display:inline-block;
+        }
+    }
+    .ghost{
+        opacity:0.6;
+    }
+    select{
+        width:13em;
+    }
+    .ouSelector{
+        float:right;
+    }
+}
+#thumbColumnWidth{
+    padding:0;
+    position:absolute;
+    width:200px;
+    height:2px;
+    right:0;
+    z-index:99;
+    transform:scaleX(-1);
+    border:none;
+    background-color:@highlight;
+}
+#loadingSpinner i{
+    width:100%;
+    color:@font-color;
+    font-size:8em;
+    margin-top:10%;
+}
+#pluginBar{
+    display:table-row;
+    background-color:transparent;
+    //height:140px;
+    bottom:0;
+}
+.plugin .collapseButton {
+  margin:2px;
+}
+.plugin .pluginCollapsable {
+  background:white;
+}
+.plugin{
+    padding:0 2px;
+    display:table-cell;
+    vertical-align:top;
+    font-size:1rem;
+    .pluginName{
+        background-color:@body-bg;
+        color:white;
+        text-align:center;
+        padding:0 1em;
+    }
+}
+#masterFooter{
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+}
+#masterHeader{
+    width:100%;
+    margin-top:2px;
+    margin-bottom:1px;
+}
+#masterFooter{
+    margin-top:1px;
+}
+#optionBlocks{
+    flex-wrap:wrap;
+}
+@media(max-width:@width-mobile){
+    #optionBlocks{
+        flex-wrap:wrap-reverse;
+        margin:0 1em !important;
+    }
+    .indent{
+        margin:0 !important;
+    }
+    .button-toggle{
+        label, button{
+            flex-grow:1;
+        }
+    }
+    .btn-icon{
+        flex-grow:1;
+    }
+}
+html{
+    overflow:hidden;
+}
+#searchButton{
+    display:inline-block;
+}
+#popupCategories{
+    margin-right:4px;
+}
+.insetColumn{
+    position:absolute;
+    margin-left:54px;
+    margin-top:-54px;
+    z-index:3;
+    background-color:@body-bg;
+}
+.healthCheckCanvas{
+    background-image:@body-backgroundimage;
+    background-size:100% 100%;
+    background-opacity:0.5;
+}
+.translucent{
+    color:@text-std;
+    // no longer translucent
+    background-color:transparent;
+    //background-color:rgba(255,255,255,0.5);
+}
+#masterHeaderFlexContainer{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    meter,svg{
+        height:10px;
+        width:50px;
+        display:block;
+        margin-top:2px;
+    }
+    #healthStatus{
+        margin-top:0px;
+    }
+    svg{
+        stroke:@text-std;
+        background-color:white;
+        height:26px;
+        fill:@highlight;
+    }
+    .heading, .meters{
+        display:inline-block;
+    }
+    .meters{
+        margin-left:4px;
+    }
+    .heading{
+        text-align:center;
+        vertical-align:top;
+        margin-top:-2px;
+        // padding-left:1em;
+        margin-left:11px;
+        flex-grow:1;
+        //background-color:darkgray;
+        //color:black;
+    }
+}
+.groupBuilderGroup{
+    margin:1em;
+    display:inline-block;
+    padding:1em;
+    border:1px solid black;
+    padding-top:0;
+    .title{
+        margin:0;
+        border-bottom:1px solid black;
+    }
+}
+body{
+    background-image:@body-backgroundimage;
+}
+#startAConversation button{
+    width:100%;
+}
+.main-board {
+    flex-grow:1;
+}
+#board {
+    width:100%;
+    background-color:@board-bg;
+}
+#backstageContainer{
+    width:100%;
+}
+#currentConversationTitleContainer{
+    // background-color:@floating-background;
+    color:@theme-light;//floating-foreground;
+}
+#slideControls{
+    flex-shrink:0;
+    flex-grow:0;
+    flex-wrap:nowrap;
+    float:right;
+    margin-top:-2px;
+    margin-right:2px;
+}
+#pageCountContainer {
+    background-color: transparent;
+    display:inline-block;
+    padding-top:2px;
+    padding-left:2px;
+    padding-right:2px;
+    vertical-align:bottom;
+    height:50px;
+    margin:1px;
+}
+.pageCounter {
+    color:@theme-light;
+    font-size:1.3rem;
+    text-align:center;
+}
+#slideContainer {
+    max-width:10000px;
+    margin-right:2px;
+    overflow-x:hidden;
+    img{
+        background-color:white;
+    }
+}
+.slideButtonContainer {
+    width:100%;
+    position:relative;
+}
+.slide-count {
+    text-align:right;
+    font-weight:400;
+    margin-top:-17px;
+    margin-bottom:3px;
+}
+.activeSlide .thumbnail {
+    border-left:5px solid @slide-active;
+}
+.inactiveMode {
+    display:none;
+}
+.disabledButton {
+    .btn-raised.disabled;
+    .icon-txt{
+        .btn-raised.disabled;
+        text-decoration: none !important;
+    }
+}
+.tools {
+    button {
+        margin:2px;
+        .btn-active;
+        .btn-raised;
+    }
+    .activeMode button {
+        .btn-subtool;
+        &.activeBrush {
+            .btn-subtool.active;
+        }
+    }
+    .activeTool {
+        .btn-active.active;
+    }
+}
+.button-toggle  {
+    .btn-raised;
+}
+.bg-tools {
+    background-color:@body-bg;
+}
+.groupSlideContainer{
+    position:absolute;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+.pen .icon-txt {
+    color:@subtool-fg;
+    text-shadow:none;
+}
+.colorDot {
+    text-shadow:1px 1px #ccc;
+}
+.permission-states {
+    input[type="checkbox"]{
+        & + label {
+            padding: 0.5em 2px;
+            width:80px;
+            max-width: (@toolbar-btn-width * 2) + 4;
+            background-color: @toggle-bg;
+            color: @toggle-fg;
+            .btn-raised;
+        }
+        &:checked +label {
+            background:@toggle-active-bg;
+            color:@toggle-active-fg;
+            &:before {
+                content:"\f00c";
+            }
+        }
+        &[disabled] + label {
+            .btn-active.disabled;
+            .btn-raised.disabled;
+        }
+    }
+}
+.thumbGroup .sparkline{
+    stroke:@text-std;
+    fill:@highlight;
+}
+#s2cMessageContainer {
+    .block;
+    position: absolute;
+    top: 20%;
+    left: 12%;
+    width: 75%;
+    border: 1px solid @block-borders;
+    display:none;
+    z-index:4;
+}
+#thumbScrollContainer {
+    top:40px;
+    max-height: calc(~"100vh - 40px");
+    overflow-y: auto;
+}
+#shareContainer {
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    z-index: 10;
+    display:none;
+}
+.searchResultItem {
+    justify-content:space-between;
+}
+input[type=submit]{
+    .button-transparent-border;
+}
+#boardContainer{
+    position:relative;
+}
+#marquee,#zoomMarquee,#selectMarquee{
+    display:none;
+}
+#marquee,.selectionAdorner,.resizeHandle,#zoomMarquee,#selectMarquee{
+    border:1px dashed red;
+    position:absolute;
+    pointer-events:none;
+}
+.voting-block {
+    background-color: @block-bg;
+    color:@text-std;
+}
+td.conversationSharing{
+    display:flex;
+    flex-wrap:wrap;
+    .conversationSharingChoiceContainer{
+        margin:0 1em;
+    }
+}
+#conversationSearchBoxContainer input[type=text]{
+    width:100%;
+}
+.quizOption {
+    text-align:left;
+    &:hover {
+        .fa {
+            text-decoration: none;
+        }
+    }
+    &.active {
+        .btn-active.active;
+    }
+}
+.quizSummary.active + .quizTeacherControls {
+    .btn-active.active;
+    .quizSummaryEditButton {
+        color:@toggle-active-fg;
+    }
+}
+#createConversationContainer{
+    margin-top:-1em;
+}
+#createQuizForm, .quizCreationControls {
+    .btn-icon {
+        width:@edit-poll-btn-width;
+        height:auto;
+        span {
+            .font-std;
+            .icon-txt;
+            display:block;
+            line-height:normal;
+        }
+    }
+}
+.quizRemoveOptionButton {
+    .nmt;
+}
+.quizImagePreview {
+    max-width:100%;
+    border: 4px solid @slide-active;
+}
+#customizeBrushPopup {
+    .dots button{
+        .btn-subtool;
+        &.activeTool {
+            .btn-subtool.active;
+        }
+    }
+    #sizes button {
+        height:auto;
+    }
+}
+#healthCheckListing{
+    background-image:@body-backgroundimage;
+}
+.dots{
+    flex-wrap:wrap;
+}
+.navigationNext, .navigationPrevious {
+    a {
+        .fa;
+        .button-round;
+        height:50px;
+        max-width:50px;
+    }
+    span {
+        .hidden;
+    }
+}
+.navigationNext a {
+    &:before {
+        content:"\f105";
+    }
+}
+.navigationPrevious a {
+    &:before {
+        content:"\f104";
+    }
+}
+.slideThumbnailNumber{
+    background-color: white;
+    color: black;
+    padding-left:2px;
+    padding-right:2px;
+    border: 1px solid black;
+}
+#applicationMenuButton{
+    background-color:white;
+}
+#applicationMenuPopup{
+    flex-shrink:0;
+}
+#applicationMenuButton span{
+    margin-left:0.2em;
+    font-size:80%;
+}
+.backstage .btn-icon{
+    font-size:16px;
+}
+.penDialogOptions{
+    display:flex;
+    button{
+        flex-grow:0;
+        flex-shrink:0;
+    }
+}
+#drawDropdowns button{
+    &.activeTool{
+        background-color:@highlight;
+    }
+}
+#participantsListingContainer{
+    td, th{
+        text-align:center;
+    }
+}
+.fa-sm{
+    font-size: 0.6em;
+    vertical-align: middle;
+}

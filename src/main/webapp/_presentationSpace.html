@@ -1,0 +1,27 @@
+<div id="boardContainer">
+  <canvas id="board" class="fill" ></canvas>
+  <div id="textInputInvisibleHost"></div>
+  <div id="selectionAdorner"></div>
+  <div id="radar" ></div>
+  <div id="marquee" ></div>
+  <div id="imageAdorner">
+    <div id="imageMarquee"></div>
+    <div id="imageInsertOptions" class="block with-border input-full-width">
+      <h2 class="med-txt nmt"><strong><label for="imageInsertOptionsClose" class="nm">Insert image</label></strong></h2>
+      <button id="imageInsertOptionsClose" class=" btn-close fa fa-times nmt"><span class="hidden">Close</span></button>
+			<img src="/static/images/spinner.gif" id="imageWorking"></img>
+      <input type="file" id="imageFileChoice"></input>
+    </div>
+    <div id="videoInsertOptions" class="block with-border input-full-width">
+      <h2 class="med-txt nmt"><strong><label for="imageInsertOptionsClose" class="nm">Insert video</label></strong></h2>
+      <button id="videoInsertOptionsClose" class=" btn-close fa fa-times nmt"><span class="hidden">Close</span></button>
+      <input type="file" id="videoFileChoice"></input>
+    </div>
+  </div>
+  <div id="loadingSlidePopup" class="loading-spinner" style="display:none;">
+    <span class="icon-spinner">
+      <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only" id="targetSlide">Loading...</span>
+    </span>
+  </div>
+</div>

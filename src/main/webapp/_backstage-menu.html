@@ -1,0 +1,537 @@
+<span>
+  <div class="backstage-menu box-model-block flex-container-row">
+    <span id="absoluteCloseButton"></span>
+    <div id="applicationMenuPopup" class="backstageHeader mt mlr flex-container-responsive">
+      <nav class="flex-container-column main-menu-container tools" id="popupCategories">
+        <button class="toolbar backstageCategory btn-icon fa fa-bars" id="metaToolbar"><div class="icon-txt">Home</div></button>
+        <button class="toolbar backstageCategory btn-icon fa fa-group" id="roomToolbar"><div class="icon-txt">Learning</div></button>
+        <button class="toolbar backstageCategory btn-icon fa fa-cog" id="optsToolbar"><div class="icon-txt">Settings</div></button>
+      </nav>
+      <div class="lift:embed?what=_futureApplicationButton"></div>
+    </div>
+    <div class="backstage-content mt mlr grow">
+      <div id="backstageContainer" class="box-model-block">
+        <div id="settingsPopup" class="backstage">
+          <h2 class="nmt">Settings</h2>
+          <input type="checkbox" id="slidesToggleButton" checked="true"></input>
+          <label for="slidesToggleButton"><span class="icon-txt">Show page list</span></label>
+          <input type="checkbox" id="toolsToggleButton" checked="true"></input>
+          <label for="toolsToggleButton"><span class="icon-txt">Show tools</span></label>
+        </div>
+        <div id="blacklistPopup" class="backstage">
+          <!--<h2 class="nmt">Manage banned content</h2>-->
+          <div class="flex-container-col">
+            <div>
+              <h2>Currently banned users</h2>
+              <div id="unbanAll" class="with-border fa-border" style="cursor:pointer;">
+                <span class="fa fa-users" style="display:inline-block">
+                  <div class="icon-txt">Unban</div>
+                </span>
+                <span style="display:inline-block">All</span>
+              </div>
+              <div class="flex-container-responsive" id="currentBlacklistAuthorList" style="cursor:pointer;">
+                <div class="blacklistAuthorContainer ml">
+                  <div class="blacklistAuthor with-border fa-border unbanContainer blacklistAuthorUnbanButton">
+                    <span class="fa fa-user-plus" style="display:inline-block">
+                      <div class="icon-txt">Unban</div>
+                    </span>
+                    <span class="blacklistAuthorName" style="display:inline-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h2>Banned content</h2>
+              <div id="blacklistDatagrid">
+                <div class="blacklistRecord">
+                  <div class="blacklistLegend">
+                    <div class="blacklistAuthor">
+                      <span class="blacklistAuthorColor" width="10px" height="10px">&nbsp;</span>
+                      <span class="blacklistAuthorName"></span>
+                    </div>
+                  </div>
+                  <img class="blacklistImage"></img>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="integrationsPopup" class="backstage">
+          <h2 class="nmt">Integration options</h2>
+          <div>
+            <div>
+              <h3>Direct links to this location</h3>
+              <div class="conversationLinks" class="flex-container-column">
+                <div class="flex-container-row">
+                  <button class="deeplink fa fa-border btn-icon fa-clipboard mr" style="height:1.5em;margin-top:0;">
+                    <span class="icon-txt">Copy</span>
+                  </button>
+                  <span id="projectorViewLink"></span>
+                </div>
+                <div class="flex-container-row">
+                  <button class="deeplink fa fa-border btn-icon fa-clipboard mr" style="height:1.5em;margin-top:0;">
+                    <span class="icon-txt">Copy</span>
+                  </button>
+                  <span id="conversationDeepLink"></span>
+                </div>
+                <div class="flex-container-row">
+                  <button class="deeplink fa fa-border btn-icon fa-clipboard mr" style="height:1.5em;margin-top:0;">
+                    <span class="icon-txt">Copy</span>
+                  </button>
+                  <span id="slideDeepLink"></span>
+                </div>
+              </div>
+            </div>
+            <!--
+                <div>
+                  <h3>Analytics over this conversation</h3>
+                  <div id="conversationAnalysis"></div>
+                </div>
+                -->
+            <div>
+              <h3>Copy this conversation to OneNote</h3>
+              <div id="oneNoteExport"></div>
+            </div>
+          </div>
+        </div>
+        <div id="printPopup" class="backstage">
+          <h2 class="nmt">Print conversation</h2>
+          <div>
+            <div>
+              <h3>Page Range</h3>
+              <input type="radio" id="rangeAll" name="rangeAll"></input>
+              <label for="rangeAll">All pages</label>
+              <input type="radio" id="rangeSpecified" name="rangeSpecified"></input>
+              <label for="rangeSpecified">Specific pages</label>
+              <div class="rangeSpecifiedDescriptionContainer">
+                <div class="rangeSpecifiedDescription">Type the page numbers and/or page ranges, separated by commas, counting from the start of the document.  For example, type 1,3,5-12</div>
+                <label for="rangeSpecifiedInput">Range: </label>
+                <input type="text" id="rangeSpecifiedInput" name="rangeSpecifiedInput"></input>
+              </div>
+              <input type="radio" id="rangeThisSlide" name="rangeThisSlide"></input>
+              <label for="rangeThisSlide">Just this page</label>
+              <input type="checkbox" id="printPrivateNotes"></input>
+              <label for="printPrivateNotes">Include private notes</label>
+              <input type="checkbox" id="printPageCount"></input>
+              <label for="printPageCount">Include page count</label>
+              <input type="checkbox" id="printConversationTitle"></input>
+              <label for="printConversationTitle">Include conversation title</label>
+              <a id="printButton">
+                <button class="fa fa-border btn-icon fa-print">
+                  <div class="icon-txt">Print</div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id="submissionsPopup" class="backstage">
+          <h2 class="nmt">Submissions</h2>
+          <div id="submissionsDatagrid">
+            <div class="insertOnNextSlideButtonContainer">
+              <button class="insertOnNextSlideButton button-transparent-border mth">
+                <span>Insert on next page</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <section id="attachmentsPopup" class="backstage box-model-block">
+          <h2 class="align-left mrh nmt">Attachments</h2>
+          <div id="attachmentCreateButtonContainer" class="align-left">
+            <button id="attachmentCreationButton" class="attachmentCreationButton button-transparent-border mth">
+              <span>Add attachment</span>
+            </button>
+          </div>
+          <div id="attachmentUploadFormContainer" class="clear mt">
+            <label for="attachmentFileChoice">Select file to attach</label>
+            <input type="file" id="attachmentFileChoice"></input>
+          </div>
+          <div id="attachmentsDatagrid">
+            <span class="deleteButtonContainer">
+              <button class="deleteButton toolbar fa fa-trash nm btn-icon" type="button"><span class="hidden">Delete</span></button>
+            </span>
+          </div>
+        </section>
+        <section id="groupsPopup" class="backstage box-model-block">
+          <h2>Group editor</h2>
+          <div class="flex-container-responsive ml">
+            <div style="flex-grow:1;margin-left:1em;margin-top:-1em;">
+              <h3>Groups on this page</h3>
+              <div>You may move students by dragging them between groups</div>
+              <div>Please be aware of the impact on students if an already formed group is modified</div>
+              <div class="groups"></div>
+            </div>
+          </div>
+          <div id="groupSlideDialog" style="display:none">
+            <div class="flex-container-responsive ml groupSlideDialog">
+              <div>
+                <h3>Fill groups until</h3>
+                <div class="flex-container-responsive">
+                  <select class="strategySelect"></select>
+                  <select class="parameterSelect"></select>
+                </div>
+                <div class="importContainer" style="height:100%;position:relative;">
+                  <h3>Starting from
+                    <select class="ouSelector"></select>
+                  </h3>
+                  <div class="importGroups"></div>
+                  <div class="groupsOu blocker" style="display:none;min-height:70%;padding-top:20%;text-align:center;top:0;left:0;position:absolute;width:100%;background-color:lightgray;opacity:0.5;"><span class="fa fa-icon fa-cog fa-spin"></span></div>
+                </div>
+              </div>
+              <div class="mlr" style="width:100%">
+                <div class="flex-container-responsive">
+                  <h3>Show me</h3>
+                  <select class="groupScope" style="flex-grow:1"></select>
+                </div>
+                <div style="float:right">
+                  <button class="fa fa-icon fa-random" style="border:1px solid black;background-color:white;margin-top:0;" id="randomizeGroups">
+                    <span class="icon-txt">Randomize</span>
+                  </button>
+                </div>
+                <div class="groups"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="helpPopup" class="backstage box-model-block">
+          <h2 class="mrh nmt">Help</h2>
+          <div class="nmt">
+            <span><em>User </em></span>
+            <strong><span id="username"></span></strong>
+            <span><em> working in </em></span>
+            <span class="currentGroupTitle"></span>
+            <span class="currentConversationTitle"></span>
+          </div>
+          <br/>
+          <div class="nmt">
+            <i class="fa fa-question-circle"></i>
+            <a href="https://stackableregiments.github.io/analyticalmetlx/academy-faq.html" target="_blank">Frequently Asked Questions</a>
+          </div>
+          <div class="nmt">
+            <i class="fa fa-book"></i>
+            <a href="https://stackableregiments.github.io/analyticalmetlx/guide.html" target="_blank">User Guide</a>
+          </div>
+          <div class="nmt">
+            <i class="fa fa-send"></i>
+            <a href="#" onclick="$.jAlert({
+                    title:'Report a Problem',
+                    iframe:'/reportProblem?search=false&conversation=' + Conversations.getCurrentConversation().jid + '&slide=' + Conversations.getCurrentSlide().id,
+                    width:'50%'
+                });">Report a Problem</a>
+          </div>
+        </section>
+        <section id="gradesPopup" class="backstage box-model-block">
+          <h2 class="align-left mrh nmt">Grades</h2>
+          <div id="createGradeButtonContainer" class="align-left">
+            <button id="createGradeButton" class="gradeCreationButton button-transparent-border mth">
+              <span>Create grade</span>
+            </button>
+          </div>
+          <div id="gradesDatagrid">
+            <span class="gradeAssessContainer">
+              <div class="gradeSyncActions">
+                <button class="getRemoteData button-transparent-border mth"><span>Refresh remote data</span></button>
+                <button class="sendGradesToRemote button-transparent-border mth"><span>Send grades</span></button>
+              </div>
+              <div class="gradebookDatagrid">
+                <span class="gradeValueEditPopup">
+                  <div class="changeGradeContainer">
+                    <label class="gradeValueCommentTextboxLabel">Score</label>
+                    <input class="numericScore" type="number"></input>
+                    <input class="textScore" type="text"></input>
+                    <div class="permission-states">
+                      <input class="booleanScore" type="checkbox"></input>
+                      <label class="booleanScoreLabel">Pass?</label>
+                    </div>
+                  </div>
+                  <div class="changeCommentContainer">
+                    <label class="gradeValueCommentTextboxLabel">Comment</label>
+                    <input class="gradeValueCommentTextbox" type="text"></input>
+                  </div>
+                  <div class="changePrivateCommentContainer">
+                    <label class="gradeValuePrivateCommentTextboxLabel">Private comment</label>
+                    <input class="gradeValuePrivateCommentTextbox" type="text"></input>
+                  </div>
+                  <div class="flex-container-responsive">
+                    <button class="submitGradeValueChange" style="border:1px solid black;margin-right:1em;">Submit</button>
+                    <button class="cancelGradeValueChange" style="border:1px solid black">Cancel</button>
+                  </div>
+                </span>
+                <span class="gradeUserContainer">
+                  <input class="numericScore" type="number"></input>
+                  <input class="textScore" type="text"></input>
+                  <div class="permission-states">
+                    <input class="booleanScore" type="checkbox"></input>
+                    <label class="booleanScoreLabel">Pass?</label>
+                  </div>
+                </span>
+              </div>
+            </span>
+            <span class="gradeEditContainer">
+              <fieldSet>
+                <div>
+                  <label class="gradeNameLabel">Name<label>
+                      <input type="text" name="gradeName" class="gradeNameInputBox"></input>
+                </div>
+                <div>
+                  <label class="gradeDescriptionLabel">Description<label>
+                      <input type="text" name="gradeDescription" class="gradeDescriptionInputBox"></input>
+                </div>
+                <div>
+                  <label class="gradeTypeLabel">Type<label>
+                      <select name="gradeType" class="gradeTypeSelect">
+                        <option value="numeric">Numeric</option>
+                        <option value="boolean">Boolean</option>
+                        <option value="text">Text</option>
+                      </select>
+                </div>
+                <div class="numericOptions">
+                  <label class="numericMinLabel">Minimum</label>
+                  <input type="number" class="numericMinTextbox"></input>
+                  <label class="numericMaxLabel">Maximum</label>
+                  <input type="number" class="numericMaxTextbox"></input>
+                </div>
+                <div class="permission-states mb">
+                  <input type="checkbox" class="gradeVisibleCheckbox"></input>
+                  <label class="gradeVisibleLabel"><span class="icon-txt">Visible to students</span></label>
+                </div>
+                <div class="associateController" style="position:relative;min-height:150px;width:100%;">
+                  <span class="refreshAssociation">
+                    <label style="display:inline-block">Associated grade</label>:
+                    <span class="associationSystem"></span>->
+                    <span class="associationOrgUnit"></span>->
+                    <span class="associationGradeId"></span>
+                    <span class="association"></span>
+                    <button class="requestRefreshAssociation button-transparent-border mth"><span>Refresh from remote</span></button>
+                    <button class="disassociateGrade button-transparent-border mth"><span>Disassociate grade</span></button>
+                  </span>
+                  <span class="createAssociation">
+                    <span class="requestAssocPhase1 associationPhase">
+                      <button class="requestAssociation button-transparent-border mth"><span>Associate this grade with a remote grade</span></button>
+                    </span>
+                    <span class="requestAssocPhase2 associationPhase">
+                      <label for="chooseGradebookForGradeSelectBox">Choose a gradebook</label>
+                      <select id="chooseGradebookForGradeSelectBox" class="chooseGradebook"></select>
+                      <button class="commitGradebook button-transparent-border mth"><span>Associate with this gradebook</span></button>
+                    </span>
+                    <span class="requestAssocPhase3 associationPhase">
+                      <label for="chooseOrgUnitForGradeSelectBox">Courses</label>
+                      <select id="chooseOrgUnitForGradeSelectBox" class="chooseOrgUnit"></select>
+                      <button class="commitOrgUnit button-transparent-border mth"><span>Associate within this course</span></button>
+                    </span>
+                    <span class="requestAssocPhase4 associationPhase">
+                      <label for="chooseExistingGradeSelectBox">Choose an existing grade</label>
+                      <select id="chooseExistingGradeSelectBox" class="linkGradeChoices"></select>
+                      <button class="linkGrade button-transparent-border mth"><span>Link this grade to an existing grade in the course</span></button>
+                      <button class="createGrade button-transparent-border mth"><span>Create a new grade in the course</span></button>
+                    </span>
+                    <span class="fixGradeTypeErrorsContainer">
+                      <div>The grade has changed type.  Scores that have already been assigned can no longer be shown against this grade because they are of the previous type.  Here are some suggested conversions.  Please review them, and click the "Apply" button for each one that you wish to keep.  Each will be immediately converted.</div>
+                      <div class="individualFixesContainer">
+                        <div class="individualFix">
+                          <button class="commitIndividualFix button-transparent-border mr" style="display:inline-block;">Apply</button>
+                          <span class="individualFixOldValue"></span> converts to <span class="individualFixNewValue mr"></span><span> for </span>
+                          <span class="individualFixGradedUser"></span>
+                        </div>
+                      </div>
+                      <button class="closeIndividualFixesPopup button-transparent-border">Done</button>
+                    </span>
+                  </span>
+                  <div class="grades blocker" style="display:none;height:100%;top:0;left:0;position:absolute;width:100%;background-color:lightgray;opacity:0.5;"><span class="fa fa-icon fa-cog fa-spin"></span></div>
+                </div>
+                <div class="flex-container-responsive">
+                  <button class="cancelGradeEdit button-transparent-border mth mr"><span>Cancel</span></button>
+                  <button class="submitGradeEdit button-transparent-border mth"><span>Submit</span></button>
+                </div>
+              </fieldSet>
+            </span>
+            <span class="gradeActionsContainer">
+              <button class="editGradeButton toolbar fa fa-edit nm btn-icon" type="button"><span class="hidden">Edit</span></button>
+              <button class="assessGradeButton toolbar fa fa-bar-chart nm btn-icon" type="button"><span class="hidden">Assess</span></button>
+            </span>
+          </div>
+        </section>
+        <section id="participantsPopup" class="backstage box-model-block">
+          <div class="flex-container-responsive">
+            <h2 class="nmt">Participants</h2>
+            <div id="cloudFilter" class="ml">
+              <input type="checkbox" id="conjugate" checked="true"></input>
+              <label for="conjugate"><span class="icon-txt">Standardize conjugation</span></label>
+              <hr />
+              <input type="checkbox" id="keyboarding" checked="true"></input>
+              <label for="keyboarding"><span class="icon-txt">Keyboarding</span></label>
+              <input type="checkbox" id="handwriting" checked="true"></input>
+              <label for="handwriting"><span class="icon-txt">Inking</span></label>
+              <input type="checkbox" id="imageRecognition" checked="true"></input>
+              <label for="imageRecognition"><span class="icon-txt">Classification</span></label>
+              <input type="checkbox" id="imageTranscription" checked="true"></input>
+              <label for="imageTranscription"><span class="icon-txt">Recognition</span></label>
+            </div>
+            <div id="lang"></div>
+          </div>
+          <div id="participantsDatagrid">
+            <span class="followControls">
+              <input type="checkbox" class="followValue"></input>
+              <label class="followLabel"></label>
+            </span>
+          </div>
+        </section>
+        <section id="recycleBinPopup" class="backstage box-model-block">
+          <h2 class="align-left mrh nmt">Recycle Bin</h2>
+          <div id="recycleBinDatagrid">
+            <div class="actionButtons">
+              <button class="restoreContent button-transparent-border mth">
+                <span>Restore content</span>
+              </button>
+              <span class="rowIdentity"></div>
+          </div>
+      </div>
+      </section>
+      <section id="quizzesPopup" class="backstage box-model-block">
+        <h2 class="align-left mrh nmt">Polls</h2>
+        <div id="quizCreateButtonContainer" class="align-left">
+          <button id="quizCreationButton" class="quizCreationButton button-transparent-border mth">
+            <span>Create poll</span>
+          </button>
+        </div>
+        <div id="quizDatagrid">
+          <div class="actionsButtons">
+            <button class="editPollButton button-transparent-border mth">
+              <span>Edit poll</span>
+            </button>
+            <button class="answerPollButton button-transparent-border mth">
+              <span>Answer poll</span>
+            </button>
+            <button class="viewAnswersButton button-transparent-border mth">
+              <span>Display poll</span>
+            </button>
+          </div>
+          <div class="editQuizPopup">
+            <div class="voting-block block img-resp">
+              <h3>Question:</h3>
+              <input class="quizQuestion" type="text"></input>
+              <div class="flex-container-responsive">
+                <div>
+                  <input class="addSlideImageToQuiz button-transparent-border" value="Add/Update page image" type="button"></input>
+                  <input class="removeSlideImageFromQuiz button-transparent-border" value="Remove page image" type="button"></input>
+                </div>
+                <img class="quizImagePreview ml mt" style="width:320px;height:240px"></img>
+              </div>
+              <div class="flex-container-responsive">
+                <h3>Answers:</h3>
+                <span class="addOptionButtonContainer">
+                  <button class="ml addOptionButton button-transparent-border flex-container-row space-between">
+                    <span>Add option</span>
+                  </button>
+                </span>
+              </div>
+              <div class="quizOptionContainer flex-container-column">
+                <!-- many ".quizOption"s are cloned from JS -->
+                <div class="quizOption">
+                  <span class="quizOptionName mrh"></span>
+                  <input type="text" class="quizOptionText"></input>
+                  <button class=" quizOptionDelete btn-icon fa fa-trash" type="button" id="delete"><div class="icon-txt">Delete</div></button>
+                </div>
+              </div>
+            </div>
+            <div class="currentQuizTeacherControls flex-container-responsive">
+              <input class="updateQuiz button-transparent-border" value="Save this poll" type="button"></input>
+              <input class="deleteQuiz button-transparent-border ml" value="Delete this poll" type="button"></input>
+            </div>
+          </div>
+          <div class="answerQuizPopup">
+            <div class="currentQuizItem">
+              <div class="voting-block block img-resp">
+                <h3 class="quizQuestion"></h3>
+                <img class="quizImagePreview" style="width:320px;height:240px"></img>
+                <div class="quizOptionCountContainer">
+                  There are <span class="quizOptionCount"></span> answer<span class="quizOptionCountPluralizer"></span>.
+                </div>
+                <div class="quizOptionContainer flex-container-column">
+                  <div class="quizOption">
+                    <button   class="quizOptionButton button-transparent-border flex-container-row space-between">
+                      <span class="quizOptionName mrh"></span>
+                      <span class="quizOptionText"></span>
+                      <span class="fa fa-thumbs-up align-right mlh"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="viewResultsPopup">
+            <div class="currentQuizItem">
+              <div class="voting-block block img-resp">
+                <h3 class="nmt mbh resultsTitle">Results for <span class="quizQuestion"></span></h3>
+                <div class="flex-container-responsive" style="width:100%">
+                  <span class="quizResultsGraph"></span>
+                  <div>
+                    <img class="quizImagePreview"></img>
+                    <div class="quizOptionContainer" style="display:table;">
+                      <!-- many ".quizOption"s are cloned from JS -->
+                      <div class="quizOption" style="display:table-row;">
+                        <span class="quizOptionName" style="display:table-cell;"></span>
+                        <span class="quizOptionText" style="display:table-cell;padding-left:1em;"></span>
+                        <span class="quizOptionCountContainer" style="display:table-cell;padding-left:1em;">
+                          <span class="quizOptionAnswerCount"></span>
+                        </span>
+                        <meter class="quizOptionMeter" style="display:table-cell;padding-left:1em;"></meter>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="currentQuizTeacherControls">
+                <input class="quizResultsShouldDisplayOnSlide button-transparent-border" value="Display poll with results on current page" type="button"></input>
+                <input class="quizResultsShouldDisplayOnNextSlide button-transparent-border" value="Display poll with results on new page" type="button"></input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contentFilterPopup" class="backstage box-model-block">
+        <h2 class="align-left mrh nmt">Content filters</h2>
+        <div class="content-filter-listing align-left half mrh clear">
+          <div id="contentFilterListing" class="clear box-model-block">
+            <div class="contentFilterItem flex-container-row btn-list">
+              <input type="checkbox" class="contentFilterCheckbox"></input>
+              <label class="contentFilterCheckboxLabel">
+                <span class="contentFilterCheckboxLabelText"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="healthCheckPopup" class="backstage box-model-block">
+        <h2 class="align-left mrh nmt">Client health</h2>
+        <div class="health-check-listing align-left half mrh">
+          <div id="healthCheckListing" class="clear box-model-block">
+            <div class="healthCheckItem flex-container-row">
+            </div>
+          </div>
+        </div>
+        <div class="health-check-summary align-right quarter mrh">
+          <div class="healthCheckSummaryLatencyContainer">
+            <h3>Network status</h3>
+            <div>
+              <div>Latency to server: <span class="latencyAverage"></span> ms (<span class="latencyHumanReadable"></span>)</div>
+              <div>Highest: <span class="bestLatency"></span> ms </div>
+              <div>Lowest: <span class="worstLatency"></span> ms </div>
+            </div>
+            <div>
+              <h4>Network call success rate</h4>
+              Client request success rate: <span class="successRate">0</span>%
+            </div>
+            <div class="heathCheckSummaryServerResponseContainer">
+              <h4>Server response queue length</h4>
+              <div>Queue wait time: <span class="serverResponseAverage"></span> ms (<span class="serverResponseHumanReadable"></span>)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="close-section mt mlr">
+      <button class="toolbar backstageTabHeader closeButton fa fa-times nm btn-icon" type="button" id="hideBackstage"><span class="hidden">Close</span></button>
+    </div>
+  </div>
+</div>
+</span>
